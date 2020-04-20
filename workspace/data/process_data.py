@@ -3,6 +3,12 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Function to load data from csv files.
+    Args: messages_filepath, categories_filepath.
+    Return: Merged Pandas df. 
+    """
+
     # read in file
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -11,6 +17,14 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 def clean_data(df):
+    """
+    Function to clean data.
+    Args: Pandas data frame df.
+    Return: Cleaned df after:
+        *Split categories into separate category columns.
+        *Convert category values to just numbers 0 or 1.
+        *Remove duplicates.
+    """
     # Split categories into separate category columns.
     categories = df['categories'].str.split(';', expand=True)
     row = categories[0:1].values 
@@ -33,6 +47,10 @@ def clean_data(df):
     return df
 
 def save_data(df, database_filename):
+    """
+    Function to save data to database.
+    Args: Pandas data frame df, database_filename.
+    """
     # save to database
     engine = create_engine('sqlite:///%s' %(database_filename))
     df.to_sql('DisasterResponseTable', engine, index=False)

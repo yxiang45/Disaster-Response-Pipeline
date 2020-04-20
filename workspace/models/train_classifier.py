@@ -23,6 +23,11 @@ import pickle
 import warnings
 
 def load_data(database_filepath):
+    """
+    Function to load data from database and split data to X,Y data set for ML.
+    Args: database_filepath.
+    Return:X, Y data sets and category_names of Y dataset. 
+    """
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('DisasterResponseTable', engine)
     category_names = df.columns[4:]
@@ -33,6 +38,11 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """
+    Function to tokenize text message.
+    Args: text.
+    Return: A list of tokens from text. 
+    """
     raw_toks = word_tokenize(text)
     lem = WordNetLemmatizer()
     tokens = []
@@ -42,7 +52,11 @@ def tokenize(text):
 
 
 def build_model():
- 
+    """
+    Function to build a ML model.
+    Args: None.
+    Return: A ML pipeline. 
+    """ 
     pipeline = Pipeline([('vect', CountVectorizer(tokenizer=tokenize)), ('tfidf', TfidfTransformer()),
                      ('clf', MultiOutputClassifier(AdaBoostClassifier(base_estimator=RandomForestClassifier(),
                         n_estimators=100, learning_rate=0.9,
@@ -51,6 +65,11 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Function to evaluate a ML model.
+    Args: ML model, X_test dataframe, Y_test dataframe, list of category_names.
+    Return: A ML pipeline. 
+    """ 
     y_pred = model.predict(X_test)
     
     for i, col in enumerate(category_names):
@@ -59,6 +78,9 @@ def evaluate_model(model, X_test, Y_test, category_names):
         print(classification_report(Y_test[col], y_pred[:, i]))
 
 def save_model(model, model_filepath):
+    """
+    Function to save ML model by pickle.
+    """ 
     with open(model_filepath, 'wb') as file:
         pickle.dump(model, file)
 
