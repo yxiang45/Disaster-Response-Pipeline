@@ -32,10 +32,19 @@ and to build a supervised ML model for an API that classifies disaster messages.
 4. Result:
 
 ![alt text](/.images/overview.png "Over view") 
+
+
 ![alt text](/.images/overview1.png "Over view") 
+
+
 ![alt text](/.images/overview2.png "Over view") 
+
+
 ![alt text](/.images/classification1.png "Message classification") 
+
+
 ![alt text](/.images/classification.png "Message classification") 
 
+
 ### Acknowledgements
-I would like to thank Udacity for the project design and Figure Eight for Disaster Response dataset.
+I would like to thank Udacity for the project design and Figure Eight for the Disaster Response dataset.
