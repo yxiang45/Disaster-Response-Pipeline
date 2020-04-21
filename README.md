@@ -1,7 +1,6 @@
 # Disaster Response Pipeline Project
 
 ### Description
--------------
 The motivation of this project is to apply data science and machine learning tools to analyze disaster data from Figure Eight,
 and to build a supervised ML model for an API that classifies disaster messages.
 
@@ -13,7 +12,6 @@ and to build a supervised ML model for an API that classifies disaster messages.
 5. app: a Flask web app to load a pre-trained ML model and to classify disaster messages.
 
 ###Installation
------------------------
 1. Clone or download this repository.
 2. Install python3 and Jupyter Notebook.
 3. Install required python packages.
@@ -34,5 +32,5 @@ and to build a supervised ML model for an API that classifies disaster messages.
 4. Result:
 ![alt text](/.images/overview.png "Over view") 
 ![alt text](/.images/overview1.png "Over view") 
+![alt text](/.images/classification1.png "Message classification") 
 ![alt text](/.images/classification.png "Message classification") 
-![alt text](/.images/overview1.png "Message classification") 
