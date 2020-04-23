@@ -18,7 +18,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 import nltk
-nltk.download(['punkt', 'wordnet'])
+from nltk.corpus import stopwords
+nltk.download(['punkt', 'wordnet','stopwords'])
 import pickle
 import warnings
 
@@ -45,9 +46,7 @@ def tokenize(text):
     """
     raw_toks = word_tokenize(text)
     lem = WordNetLemmatizer()
-    tokens = []
-    for tok in raw_toks:
-        tokens.append(lem.lemmatize(tok).strip().lower())        
+    tokens = [lem.lemmatize(t).strip().lower() for t in raw_toks if t not in stopwords.words("english")]        
     return tokens
 
 
